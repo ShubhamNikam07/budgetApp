@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>budegtApp</title>
+</head>
+
+<body>
+    <div class="top">
+        <h2>Hi shubham</h2>
+        <div class="budget">
+            <div class="budget_title">
+                Available budget in <span class="budget_title_month"></span>
+            </div>
+            <div class="budget_value">0.0</div>
+            <div class="budget_incomeclearFix">
+                <div class="budget_income_text">Income</div>
+                <div class="right">
+                    <div class="budget_income_value">0.00</div>
+                    <div class="budget_income_percentage"></div>
+                </div>
+            </div>
+            <div class="budget_expenseClearFix">
+                <div class="budget_expenses_text">Expenses</div>
+                <div class="right_clearfix">
+                    <div class="budget_expenses_value">0.00</div>
+                    <div class="budget_expenses_percentage"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="add">
+            <div class="ad_container">
+                <select class='add_type'>
+                    <option value="inc" selected>+</option>
+                    <option value="exp">-</option>
+                </select>
+                <input type='text' class="add_description" placeholder="add_description">
+                <input type='number' class="add_value" placeholder="value">
+                <button id="add_btn1" class='add_btn'><i class="checkmark_outline">Submit</i></button>
+            </div>
+        </div>
+        <div class="container_clearfix">
+            <div class="income">
+                <h2 class="income_title">Income</h2>
+                <div class="income_list">
+                    <!--
+                    <div class="item_clearfix" id="income_%id%">
+                        <div class="item_description">salary</div>
+                        <div class="right_clearfix">
+                            <div class="item_value">2100</div>
+                            <div class="item_delete">
+                                <button class="item_delete_btn"><i class="ios_ios">delete</i></button>
+                            </div>
+                        </div>
+                    </div>
+                -->
+                
+                </div>
+            </div>
+            <div class="expenses">
+                <h2 class="expenses_title">Expenses</h2>
+                <div class="expensees_list">
+                <!--
+                    <div class="item_clearfix" id="expense_%id%">
+                        <div class="item_description">apartment rent</div>
+                        <div class="right_clearfix">
+                            <div class="item_value">-580</div>
+                            <div class="item_percentage">21%</div>
+                            <div class="item_delete">
+                                <button class="item_delete_btn"><i class="ios_ios">delete</i></button>
+                            </div>
+                        </div>
+                    </div>
+                -->
+                </div>
+            </div>
+        </div>
+        <script src="app.js"></script>
+        <link rel="stylesheet" href="./style.css">
+</body>
+
+</html>
