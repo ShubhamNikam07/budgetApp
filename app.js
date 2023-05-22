@@ -114,34 +114,33 @@ var budgetController=(function()
         },
         deleteItem :function(type,id)
         {
-            console.log("before delete",data.allItems)
-            if(type==='exp')
+
+            if(type ==='expense')
             {
             var ids,index;
-           ids=data.allItems['exp'].map(function(cur)
+            ids=data.allItems.exp.map(function(cur)
            {
                 return(cur.id);
            });
             index=ids.indexOf(id);
-            if(index !== -1)
+            if(index > -1)
             {
-                data.allItems['exp'].splice(index,1);
+                data.allItems.exp.splice(index,1);
             }
         }
-        else if(type==='inc')
+        else if(type==='income')
         {
         var ids,index;
-       ids=data.allItems['inc'].map(function(cur)
+       ids=data.allItems.inc.map(function(cur)
        {
             return(cur.id);
        });
         index=ids.indexOf(id);
-        if(index !== -1)
+        if(index > -1)
         {
-            data.allItems['inc'].splice(index,1);
+            data.allItems.inc.splice(index,1);
         }
     }
-    console.log("after delete",data.allItems)
         }
     }
 
@@ -164,7 +163,7 @@ var UIcontroller=(function(){
         num=Math.abs(num);
 //fixed the decimal point upto 2 precision
         num=num.toFixed(2);
-        console.log("num is",num)
+        //console.log("num is",num)
 //split the number        
         numsplit=num.split('.');
         int=numsplit[0];
@@ -199,7 +198,7 @@ var UIcontroller=(function(){
             var pointer;
             nodeList=document.querySelectorAll(".add_description"+","+".add_value");
             arrayList=Array.prototype.slice.call(nodeList);
-            console.log(arrayList[0]);
+         //   console.log(arrayList[0]);
             arrayList[0].value="";
             arrayList[1].value="";
             pointer=document.querySelector(".add_type");
@@ -259,7 +258,7 @@ var UIcontroller=(function(){
             newHtml=html.replace('%description%',obj.description);
             newHtml=newHtml.replace('%value%',formatNumber(obj.value,type));
             newHtml=newHtml.replace("%id%",obj.id);
-            console.log("object.value is",obj.value)
+          //  console.log("object.value is",obj.value)
             //adding element on web page
 
             document.querySelector(element).insertAdjacentHTML('beforeend',newHtml);
@@ -304,7 +303,7 @@ var UIcontroller=(function(){
         {
             var elem=document.getElementById(selectId);
             elem.parentNode.removeChild(elem);
-            console.log(elem)
+          //  console.log(elem)
 
         }     
     };
@@ -331,7 +330,7 @@ var controller=(function(uictrl,budgctrl){
            var percent= budgctrl.getPercent();
 
             //updatePercentage
-            console.log(percent);
+         //   console.log(percent);
             uictrl.displayPercentage(percent);
 
 
@@ -363,11 +362,12 @@ var controller=(function(uictrl,budgctrl){
         itemId = event.target.parentNode.parentNode.parentNode.id;
         if(itemId)
         {
-            console.log(itemId);
+            console.log("item id is",itemId);
         splitId=itemId.split("_");
         type = splitId[0];
-        id=splitId[1];
+        id=parseInt(splitId[1]);
         //delete item from data structure
+          //console.log("type is",type,"id is",id)
             budgctrl.deleteItem(type,id);
 
         //delete item from ui
@@ -375,7 +375,8 @@ var controller=(function(uictrl,budgctrl){
             uictrl.deleteItems(itemId)
 
         //update and show ui
-            updateBudget(type);
+            updateBudget('exp');
+            updateBudget('inc');
 
         //updatepercentage
         updatePercentage();
